@@ -130,7 +130,7 @@ onMounted(async () => {
               <router-link :to="{ path: '/events', query: { offerType: 'Location', rentalMode: 'long-term' } }">{{ t.longTermRentals }}</router-link>
             </div>
           </div>
-          <router-link class="nav-link nav-tab" to="/contact">{{ t.propertyManagement }}</router-link>
+          <router-link class="nav-link nav-tab" to="/gestion-locative">{{ t.propertyManagement }}</router-link>
           <router-link v-if="userStore.isAuthenticated" class="nav-link" to="/dashboard">{{ t.dashboard }}</router-link>
           <router-link v-if="userStore.isOrganizer" class="nav-link" to="/events/create">{{ t.publish }}</router-link>
           <router-link v-if="userStore.isAdmin" class="nav-link" to="/admin">{{ t.admin }}</router-link>
@@ -192,7 +192,7 @@ onMounted(async () => {
           <router-link @click="mobileOpen=false" class="block py-2 text-sm font-bold text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Location' } }">{{ t.rent }}</router-link>
           <router-link @click="mobileOpen=false" class="block py-2 pl-4 text-sm text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Location', rentalMode: 'seasonal' } }">{{ t.seasonalRentals }}</router-link>
           <router-link @click="mobileOpen=false" class="block py-2 pl-4 text-sm text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Location', rentalMode: 'long-term' } }">{{ t.longTermRentals }}</router-link>
-          <router-link @click="mobileOpen=false" class="block py-2 text-sm font-bold text-sub hover:text-main" to="/contact">{{ t.propertyManagement }}</router-link>
+          <router-link @click="mobileOpen=false" class="block py-2 text-sm font-bold text-sub hover:text-main" to="/gestion-locative">{{ t.propertyManagement }}</router-link>
           <router-link v-if="userStore.isAuthenticated" @click="mobileOpen=false" class="block py-2 text-sm text-sub hover:text-main" to="/dashboard">{{ t.dashboard }}</router-link>
           <router-link v-if="userStore.isOrganizer" @click="mobileOpen=false" class="block py-2 text-sm text-sub hover:text-main" to="/events/create">{{ t.publishListing }}</router-link>
           <router-link v-if="userStore.isAdmin" @click="mobileOpen=false" class="block py-2 text-sm text-sub hover:text-main" to="/admin">{{ t.administration }}</router-link>

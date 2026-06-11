@@ -12,6 +12,7 @@ import ProfileView from '../pages/MyData.vue'
 import PrivacyView from '../pages/Privacy.vue'
 import AdminView from '../pages/Admin.vue'
 import ContactView from '../pages/Contact.vue'
+import PropertyManagementView from '../pages/PropertyManagement.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -45,6 +46,7 @@ const routes = [
     meta: { requiresAuth: true },
   },
   { path: '/contact', name: 'contact', component: ContactView },
+  { path: '/gestion-locative', name: 'property-management', component: PropertyManagementView },
   { path: '/privacy', name: 'privacy', component: PrivacyView },
 
   // Legacy aliases kept for compatibility with the existing project.
