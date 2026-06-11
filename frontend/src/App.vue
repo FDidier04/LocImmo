@@ -25,6 +25,7 @@ const labels = {
     dashboard: "Dashboard",
     publish: "Publier",
     publishListing: "Publier une annonce",
+    postListing: "Déposer une annonce",
     admin: "Admin",
     administration: "Administration",
     contact: "Contact",
@@ -60,6 +61,7 @@ const labels = {
     dashboard: "Dashboard",
     publish: "Publish",
     publishListing: "Publish a listing",
+    postListing: "Post a listing",
     admin: "Admin",
     administration: "Administration",
     contact: "Contact",
@@ -154,8 +156,8 @@ onMounted(async () => {
           </button>
 
           <template v-if="!userStore.isAuthenticated">
-            <router-link to="/login" class="btn-ghost">{{ t.login }}</router-link>
-            <router-link to="/register" class="btn-primary px-4 py-2 text-xs">{{ t.register }}</router-link>
+            <router-link to="/events/create" class="btn-primary px-8 py-2 text-xs whitespace-nowrap">{{ t.postListing }}</router-link>
+            <router-link to="/login" class="btn-primary px-4 py-2 text-xs">{{ t.login }}</router-link>
           </template>
           <template v-else>
             <router-link to="/profile" class="btn-ghost text-xs">{{ userStore.fullName || t.profile }}</router-link>
@@ -200,8 +202,8 @@ onMounted(async () => {
           <router-link @click="mobileOpen=false" class="block py-2 text-sm text-sub hover:text-main" to="/privacy">{{ t.privacy }}</router-link>
           <div class="flex flex-col gap-2 border-t pt-3" style="border-color:var(--border)">
             <template v-if="!userStore.isAuthenticated">
-              <router-link @click="mobileOpen=false" to="/login" class="btn-ghost justify-start">{{ t.login }}</router-link>
-              <router-link @click="mobileOpen=false" to="/register" class="btn-primary justify-center">{{ t.register }}</router-link>
+              <router-link @click="mobileOpen=false" to="/events/create" class="btn-primary justify-center whitespace-nowrap">{{ t.postListing }}</router-link>
+              <router-link @click="mobileOpen=false" to="/login" class="btn-primary justify-center">{{ t.login }}</router-link>
             </template>
             <template v-else>
               <router-link @click="mobileOpen=false" to="/profile" class="btn-ghost justify-start">{{ t.profile }}</router-link>
