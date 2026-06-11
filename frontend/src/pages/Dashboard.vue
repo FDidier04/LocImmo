@@ -1,16 +1,19 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useEventsStore } from '../stores/events'
 import { useAuthStore } from '../stores/auth'
 
 const eventsStore = useEventsStore()
 const userStore = useAuthStore()
+const route = useRoute()
 
 const q = ref('')
 const country = ref('')
 const city = ref('')
 const propertyType = ref('')
 const offerType = ref('')
+const rentalMode = ref('')
 const maxRent = ref('')
 const sortBy = ref('recent')
 
@@ -28,7 +31,29 @@ const cities = computed(() => country.value ? (citiesByCountry[country.value] ||
 const propertyTypes = ['Appartement', 'Maison', 'Studio', 'Villa', 'Bureau', 'Terrain']
 const offerTypes = ['Location', 'Vente']
 
-onMounted(() => { eventsStore.fetchEvents() })
+function syncFiltersFromQuery(query) {
+  offerType.value = typeof query.offerType === 'string' ? query.offerType : ''
+  rentalMode.value = typeof query.rentalMode === 'string' ? query.rentalMode : ''
+}
+
+onMounted(() => {
+  syncFiltersFromQuery(route.query)
+  eventsStore.fetchEvents()
+})
+
+watch(
+  () => route.query,
+  (query) => syncFiltersFromQuery(query),
+  { deep: true }
+)
+
+const pageTitle = computed(() => {
+  if (offerType.value === 'Vente') return 'Acheter'
+  if (rentalMode.value === 'seasonal') return 'Locations saisonnieres'
+  if (rentalMode.value === 'long-term') return 'Locations longue duree'
+  if (offerType.value === 'Location') return 'Louer'
+  return 'Offres immobilieres'
+})
 
 function formatPrice(property) {
   const value = property?.monthlyRent
@@ -78,7 +103,7 @@ async function handleDelete(id) {
   <div>
     <div class="mb-8">
       <div class="section-label mb-2">Catalogue</div>
-      <h1 class="text-3xl font-extrabold text-main">Offres immobilieres</h1>
+      <h1 class="text-3xl font-extrabold text-main">{{ pageTitle }}</h1>
       <p class="mt-2 text-sm text-sub">Trouvez une location, une vente, un logement ou un local au Congo, au Gabon, au Cameroun, au Senegal, en Cote d'Ivoire, au Benin ou en Republique Centrafricaine.</p>
     </div>
 

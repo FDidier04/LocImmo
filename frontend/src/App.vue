@@ -17,6 +17,11 @@ const labels = {
   fr: {
     home: "Accueil",
     listings: "Annonces",
+    buy: "ACHETER",
+    rent: "LOUER",
+    propertyManagement: "GESTION LOCATIVE",
+    seasonalRentals: "LOCATIONS SAISONNIERES",
+    longTermRentals: "LOCATIONS LONGUE DUREE",
     dashboard: "Dashboard",
     publish: "Publier",
     publishListing: "Publier une annonce",
@@ -47,6 +52,11 @@ const labels = {
   en: {
     home: "Home",
     listings: "Listings",
+    buy: "BUY",
+    rent: "RENT",
+    propertyManagement: "PROPERTY MANAGEMENT",
+    seasonalRentals: "SEASONAL RENTALS",
+    longTermRentals: "LONG-TERM RENTALS",
     dashboard: "Dashboard",
     publish: "Publish",
     publishListing: "Publish a listing",
@@ -106,12 +116,23 @@ onMounted(async () => {
         </router-link>
 
         <nav class="hidden items-center gap-6 md:flex">
-          <router-link class="nav-link" to="/">{{ t.home }}</router-link>
-          <router-link class="nav-link" to="/events">{{ t.listings }}</router-link>
+          <router-link class="nav-link nav-tab" :to="{ path: '/events', query: { offerType: 'Vente' } }">{{ t.buy }}</router-link>
+          <div class="nav-dropdown">
+            <router-link class="nav-link nav-tab nav-dropdown-trigger" :to="{ path: '/events', query: { offerType: 'Location' } }">
+              <span>{{ t.rent }}</span>
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="m6 9 6 6 6-6"/>
+              </svg>
+            </router-link>
+            <div class="nav-dropdown-menu">
+              <router-link :to="{ path: '/events', query: { offerType: 'Location', rentalMode: 'seasonal' } }">{{ t.seasonalRentals }}</router-link>
+              <router-link :to="{ path: '/events', query: { offerType: 'Location', rentalMode: 'long-term' } }">{{ t.longTermRentals }}</router-link>
+            </div>
+          </div>
+          <router-link class="nav-link nav-tab" to="/contact">{{ t.propertyManagement }}</router-link>
           <router-link v-if="userStore.isAuthenticated" class="nav-link" to="/dashboard">{{ t.dashboard }}</router-link>
           <router-link v-if="userStore.isOrganizer" class="nav-link" to="/events/create">{{ t.publish }}</router-link>
           <router-link v-if="userStore.isAdmin" class="nav-link" to="/admin">{{ t.admin }}</router-link>
-          <router-link class="nav-link" to="/contact">{{ t.contact }}</router-link>
           <router-link class="nav-link" to="/privacy">{{ t.privacy }}</router-link>
         </nav>
 
@@ -164,8 +185,11 @@ onMounted(async () => {
 
       <Transition name="slide-up">
         <div v-if="mobileOpen" class="space-y-1 border-t px-6 py-4 md:hidden" style="border-color:var(--border);background:var(--bg-card)">
-          <router-link @click="mobileOpen=false" class="block py-2 text-sm text-sub hover:text-main" to="/">{{ t.home }}</router-link>
-          <router-link @click="mobileOpen=false" class="block py-2 text-sm text-sub hover:text-main" to="/events">{{ t.listings }}</router-link>
+          <router-link @click="mobileOpen=false" class="block py-2 text-sm font-bold text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Vente' } }">{{ t.buy }}</router-link>
+          <router-link @click="mobileOpen=false" class="block py-2 text-sm font-bold text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Location' } }">{{ t.rent }}</router-link>
+          <router-link @click="mobileOpen=false" class="block py-2 pl-4 text-sm text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Location', rentalMode: 'seasonal' } }">{{ t.seasonalRentals }}</router-link>
+          <router-link @click="mobileOpen=false" class="block py-2 pl-4 text-sm text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Location', rentalMode: 'long-term' } }">{{ t.longTermRentals }}</router-link>
+          <router-link @click="mobileOpen=false" class="block py-2 text-sm font-bold text-sub hover:text-main" to="/contact">{{ t.propertyManagement }}</router-link>
           <router-link v-if="userStore.isAuthenticated" @click="mobileOpen=false" class="block py-2 text-sm text-sub hover:text-main" to="/dashboard">{{ t.dashboard }}</router-link>
           <router-link v-if="userStore.isOrganizer" @click="mobileOpen=false" class="block py-2 text-sm text-sub hover:text-main" to="/events/create">{{ t.publishListing }}</router-link>
           <router-link v-if="userStore.isAdmin" @click="mobileOpen=false" class="block py-2 text-sm text-sub hover:text-main" to="/admin">{{ t.administration }}</router-link>
