@@ -11,6 +11,7 @@ const markets = [
   { country: 'Gabon', cities: ['Libreville', 'Port-Gentil'] },
   { country: 'Cameroun', cities: ['Douala', 'Yaounde'] },
   { country: 'Senegal', cities: ['Dakar', 'Saly', 'Saint-Louis'] },
+  { country: "Cote d'Ivoire", cities: ['Abidjan', 'Yamoussoukro', 'Bouake', 'San-Pedro'] },
 ]
 
 const searchDestinations = markets.flatMap((market) =>
@@ -70,11 +71,11 @@ const popularStays = [
   },
   {
     type: 'Maison',
-    city: 'Saly',
-    country: 'Senegal',
+    city: 'Abidjan',
+    country: "Cote d'Ivoire",
     dates: '15-18 nov.',
     host: 'Particulier',
-    price: 70000,
+    price: 82000,
     rating: '4,91',
     image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80',
   },
@@ -108,7 +109,7 @@ function formatStayPrice(value) {
         LocImmo connecte acheteurs, locataires, proprietaires et agences
       </h2>
       <p class="mt-4 max-w-3xl text-base leading-7 text-sub">
-        Publiez et trouvez des offres immobilieres au Congo, au Gabon, au Cameroun et au Senegal avec une API Symfony,
+        Publiez et trouvez des offres immobilieres au Congo, au Gabon, au Cameroun, au Senegal et en Cote d'Ivoire avec une API Symfony,
         une interface Vue moderne, l'authentification JWT et une base RGPD deja structuree.
       </p>
 
@@ -176,7 +177,7 @@ function formatStayPrice(value) {
       </div>
     </section>
 
-    <section class="grid gap-4 md:grid-cols-4">
+    <section class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
       <article v-for="market in markets" :key="market.country" class="LI-card p-5">
         <div class="section-label mb-2">Pays</div>
         <h3 class="text-xl font-extrabold text-main">{{ market.country }}</h3>

@@ -1,6 +1,6 @@
 # LocImmo
 
-Plateforme de publication d'offres immobilieres et de logements courte duree pour l'Afrique francophone, ciblee sur le Congo, le Gabon, le Cameroun et le Senegal.
+Plateforme de publication d'offres immobilieres et de logements courte duree pour l'Afrique francophone, ciblee sur le Congo, le Gabon, le Cameroun, le Senegal et la Cote d'Ivoire.
 
 Stack reprise du projet de reference :
 - Symfony 6.4 pour l'API REST
@@ -99,5 +99,5 @@ Frontend :
 - Ne pas commiter les fichiers `.env`.
 - Ne pas commiter les cles JWT privees.
 - Les types d'offre autorises sont `Location` et `Vente`.
-- Les pays autorises par validation backend sont `Republique du Congo`, `Gabon`, `Cameroun` et `Senegal`.
-- Les villes autorisees par validation backend sont `Brazzaville`, `Dolisie`, `Pointe-Noire`, `Nkayi`, `Libreville`, `Port-Gentil`, `Douala`, `Yaounde`, `Dakar`, `Saly` et `Saint-Louis`.
+- Les pays autorises par validation backend sont `Republique du Congo`, `Gabon`, `Cameroun`, `Senegal` et `Cote d'Ivoire`.
+- Les villes autorisees par validation backend sont `Brazzaville`, `Dolisie`, `Pointe-Noire`, `Nkayi`, `Libreville`, `Port-Gentil`, `Douala`, `Yaounde`, `Dakar`, `Saly`, `Saint-Louis`, `Abidjan`, `Yamoussoukro`, `Bouake` et `San-Pedro`.

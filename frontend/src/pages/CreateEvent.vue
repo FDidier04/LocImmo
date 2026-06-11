@@ -7,12 +7,13 @@ const route = useRoute()
 const router = useRouter()
 const eventsStore = useEventsStore()
 
-const countries = ['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal']
+const countries = ['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal', "Cote d'Ivoire"]
 const citiesByCountry = {
   'Republique du Congo': ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'],
   Gabon: ['Libreville', 'Port-Gentil'],
   Cameroun: ['Douala', 'Yaounde'],
   Senegal: ['Dakar', 'Saly', 'Saint-Louis'],
+  "Cote d'Ivoire": ['Abidjan', 'Yamoussoukro', 'Bouake', 'San-Pedro'],
 }
 const propertyTypes = ['Appartement', 'Maison', 'Studio', 'Villa', 'Bureau', 'Terrain']
 const offerTypes = ['Location', 'Vente']
@@ -123,7 +124,7 @@ async function submit() {
       <div class="section-label mb-3">Annonce immobiliere</div>
       <h1 class="text-3xl font-extrabold text-main">{{ pageTitle }}</h1>
       <p class="text-sub text-sm mt-2">
-        Renseignez les informations utiles pour publier une offre immobiliere au Congo, au Gabon, au Cameroun ou au Senegal.
+        Renseignez les informations utiles pour publier une offre immobiliere au Congo, au Gabon, au Cameroun, au Senegal ou en Cote d'Ivoire.
       </p>
     </div>
 

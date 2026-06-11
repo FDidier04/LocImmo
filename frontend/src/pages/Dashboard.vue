@@ -14,12 +14,13 @@ const offerType = ref('')
 const maxRent = ref('')
 const sortBy = ref('recent')
 
-const countries = ['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal']
+const countries = ['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal', "Cote d'Ivoire"]
 const citiesByCountry = {
   'Republique du Congo': ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'],
   Gabon: ['Libreville', 'Port-Gentil'],
   Cameroun: ['Douala', 'Yaounde'],
   Senegal: ['Dakar', 'Saly', 'Saint-Louis'],
+  "Cote d'Ivoire": ['Abidjan', 'Yamoussoukro', 'Bouake', 'San-Pedro'],
 }
 const cities = computed(() => country.value ? (citiesByCountry[country.value] || []) : Object.values(citiesByCountry).flat())
 const propertyTypes = ['Appartement', 'Maison', 'Studio', 'Villa', 'Bureau', 'Terrain']
@@ -76,7 +77,7 @@ async function handleDelete(id) {
     <div class="mb-8">
       <div class="section-label mb-2">Catalogue</div>
       <h1 class="text-3xl font-extrabold text-main">Offres immobilieres</h1>
-      <p class="mt-2 text-sm text-sub">Trouvez une location, une vente, un logement ou un local au Congo, au Gabon, au Cameroun ou au Senegal.</p>
+      <p class="mt-2 text-sm text-sub">Trouvez une location, une vente, un logement ou un local au Congo, au Gabon, au Cameroun, au Senegal ou en Cote d'Ivoire.</p>
     </div>
 
     <div class="grid gap-3 mb-10 lg:grid-cols-[1.25fr_0.75fr_0.75fr_0.75fr_0.75fr_0.75fr_0.7fr]">

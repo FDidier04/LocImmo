@@ -40,7 +40,7 @@ class Event
 
     #[ORM\Column(length: 80)]
     #[Assert\NotBlank]
-    #[Assert\Choice(['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal'])]
+    #[Assert\Choice(['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal', "Cote d'Ivoire"])]
     private ?string $country = 'Republique du Congo';
 
     #[ORM\Column(length: 80)]
@@ -49,7 +49,8 @@ class Event
         'Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi',
         'Libreville', 'Port-Gentil',
         'Douala', 'Yaounde',
-        'Dakar', 'Saly', 'Saint-Louis'
+        'Dakar', 'Saly', 'Saint-Louis',
+        'Abidjan', 'Yamoussoukro', 'Bouake', 'San-Pedro'
     ])]
     private ?string $city = null;
 
