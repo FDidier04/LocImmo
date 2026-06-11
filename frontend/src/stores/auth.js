@@ -55,7 +55,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   if (!authSyncInitialized && typeof window !== 'undefined') {
-    window.addEventListener('LocImmo:auth-cleared', syncFromStorage)
+    window.addEventListener('ImmoPlus:auth-cleared', syncFromStorage)
     window.addEventListener('storage', syncFromStorage)
     authSyncInitialized = true
   }

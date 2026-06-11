@@ -34,7 +34,7 @@ function clearStoredAuth() {
   localStorage.removeItem("jwt")
   localStorage.removeItem("user")
   syncApiToken("")
-  emitAuthEvent("LocImmo:auth-cleared")
+  emitAuthEvent("ImmoPlus:auth-cleared")
 }
 
 export const api = axios.create({

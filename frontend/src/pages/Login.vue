@@ -33,7 +33,7 @@ async function submit() {
           </svg>
         </div>
         <h1 class='text-3xl font-extrabold text-main'>Connexion</h1>
-        <p class='text-sub text-sm mt-2'>Accédez à votre espace LocImmo</p>
+        <p class='text-sub text-sm mt-2'>Accédez à votre espace Immo+</p>
       </div>
       <div v-if='userStore.error' class='mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm'>
         {{ userStore.error }}

@@ -1,4 +1,4 @@
-# LocImmo
+# Immo+
 
 Plateforme de publication d'offres immobilieres et de logements courte duree pour l'Afrique francophone, ciblee sur le Congo, le Gabon, le Cameroun, le Senegal et la Cote d'Ivoire.
 
@@ -19,12 +19,12 @@ Stack reprise du projet de reference :
 - types de biens : appartement, maison, studio, villa, bureau, terrain
 - fiche detaillee : quartier, adresse/repere, prix, surface, chambres, salles d'eau
 - demande de visite par utilisateur connecte
-- espace personnel et administration conserves depuis le socle LocImmo
+- espace personnel et administration conserves depuis le socle Immo+
 
 ## Structure
 
 ```text
-LocImmo/
+ImmoPlus/
 ├── backend/   # API Symfony 6.4 + Doctrine + JWT
 ├── frontend/  # SPA Vue 3 + Vite + Pinia
 ├── docker/    # reverse proxy nginx

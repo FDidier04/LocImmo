@@ -92,7 +92,7 @@ async function exportData() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = 'mes-donnees-LocImmo.json'
+    a.download = 'mes-donnees-ImmoPlus.json'
     a.click()
     URL.revokeObjectURL(url)
     success.value = "Export telecharge avec succes."

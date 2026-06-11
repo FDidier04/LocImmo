@@ -11,7 +11,7 @@ final class Version20260610121000 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Add real estate listing fields for LocImmo';
+        return 'Add real estate listing fields for ImmoPlus';
     }
 
     public function up(Schema $schema): void

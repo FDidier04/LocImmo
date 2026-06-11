@@ -15,7 +15,7 @@ function roleLabel(role) {
 
 function setRegistrationFlash(message) {
   try {
-    sessionStorage.setItem('LocImmo-registration-success', message)
+    sessionStorage.setItem('ImmoPlus-registration-success', message)
   } catch {
     // Ignore storage issues to keep the registration flow usable.
   }
@@ -63,7 +63,7 @@ async function submit() {
           </svg>
         </div>
         <h1 class='text-3xl font-extrabold text-main'>Créer un compte</h1>
-        <p class='text-sub text-sm mt-2'>Rejoignez la Plateforme LocImmo</p>
+        <p class='text-sub text-sm mt-2'>Rejoignez la Plateforme Immo+</p>
       </div>
       <div v-if='userStore.error' class='mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm'>
         <template v-if='typeof userStore.error === "object"'>
@@ -112,7 +112,7 @@ async function submit() {
             <label class='flex items-start gap-3 cursor-pointer'>
               <input v-model='form.consentGiven' type='checkbox' class='mt-0.5 rounded' />
               <span class='text-xs text-sub leading-relaxed'>
-                J&apos;accepte que mes données personnelles soient traitées par LocImmo conformément à la
+                J&apos;accepte que mes données personnelles soient traitées par Immo+ conformément à la
                 <router-link to='/privacy' class='text-orange-400 hover:underline font-medium'>politique de confidentialité</router-link>
                 (RGPD — Art. 6.1.a, version 1.0).
               </span>

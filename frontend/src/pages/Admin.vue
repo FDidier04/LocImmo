@@ -361,7 +361,7 @@ async function updateContactStatus(message, status) {
           <div class="section-label">Administration</div>
           <div>
             <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
-              Centre de pilotage LocImmo
+              Centre de pilotage ImmoPlus
             </h1>
             <p class="mt-4 max-w-2xl text-sm md:text-base leading-7 text-slate-200/85">
               Supervisez les annonces, priorisez les publications, corrigez les fiches organisateur et gardez un

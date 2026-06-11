@@ -54,7 +54,7 @@ function save() {
               Gestion des cookies
             </p>
             <p class="text-xs text-sub">
-              LocImmo utilise des cookies pour assurer le bon fonctionnement du service. Vous pouvez choisir les catégories que vous acceptez.
+              Immo+ utilise des cookies pour assurer le bon fonctionnement du service. Vous pouvez choisir les catégories que vous acceptez.
               <button @click="showDetails = !showDetails" class="text-indigo-600 underline ml-1">
                 {{ showDetails ? 'Masquer' : 'En savoir plus' }}
               </button>

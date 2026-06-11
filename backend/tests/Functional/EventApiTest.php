@@ -7,11 +7,11 @@ class EventApiTest extends ApiTestCase
     public function testParticipantCannotRegisterToTwoOverlappingEvents(): void
     {
         $organizer = $this->createUser([
-            'email' => 'schedule-organizer@LocImmo.test',
+            'email' => 'schedule-organizer@ImmoPlus.test',
             'role' => 'organisateur',
         ]);
         $participant = $this->createUser([
-            'email' => 'schedule-participant@LocImmo.test',
+            'email' => 'schedule-participant@ImmoPlus.test',
             'role' => 'participant',
         ]);
 
@@ -40,11 +40,11 @@ class EventApiTest extends ApiTestCase
     public function testParticipantCanRegisterToTwoNonOverlappingEvents(): void
     {
         $organizer = $this->createUser([
-            'email' => 'calendar-organizer@LocImmo.test',
+            'email' => 'calendar-organizer@ImmoPlus.test',
             'role' => 'organisateur',
         ]);
         $participant = $this->createUser([
-            'email' => 'calendar-participant@LocImmo.test',
+            'email' => 'calendar-participant@ImmoPlus.test',
             'role' => 'participant',
         ]);
 
@@ -69,7 +69,7 @@ class EventApiTest extends ApiTestCase
     public function testOrganizerCanCreateEvent(): void
     {
         $organizer = $this->createUser([
-            'email' => 'orga@LocImmo.test',
+            'email' => 'orga@ImmoPlus.test',
             'role' => 'organisateur',
         ]);
 
@@ -96,7 +96,7 @@ class EventApiTest extends ApiTestCase
     public function testOrganizerCanUpdateOwnEvent(): void
     {
         $organizer = $this->createUser([
-            'email' => 'owner@LocImmo.test',
+            'email' => 'owner@ImmoPlus.test',
             'role' => 'organisateur',
         ]);
         $event = $this->createEvent($organizer, [
@@ -122,7 +122,7 @@ class EventApiTest extends ApiTestCase
     public function testParticipantCannotCreateEvent(): void
     {
         $participant = $this->createUser([
-            'email' => 'participant-create@LocImmo.test',
+            'email' => 'participant-create@ImmoPlus.test',
             'role' => 'participant',
         ]);
 

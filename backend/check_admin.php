@@ -10,7 +10,7 @@ $container = $kernel->getContainer();
 $em = $container->get('doctrine')->getManager();
 $hasher = $container->get('security.user_password_hasher');
 
-$email = 'admin@LocImmo.local';
+$email = 'admin@ImmoPlus.local';
 $user = $em->getRepository(User::class)->findOneBy(['email' => $email]);
 
 if (!$user) {
@@ -31,4 +31,4 @@ echo "Password 'Admin1234!' valid: " . ($valid ? 'YES' : 'NO') . "\n";
 $valid2 = $hasher->isPasswordValid($user, 'admin123');
 echo "Password 'admin123' valid: " . ($valid2 ? 'YES' : 'NO') . "\n";
 </content>
-<parameter name="filePath">c:\Users\Utilisateur\LocImmo\backend\check_admin.php
+<parameter name="filePath">c:\Users\Utilisateur\ImmoPlus\backend\check_admin.php

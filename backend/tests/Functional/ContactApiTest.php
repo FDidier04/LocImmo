@@ -12,7 +12,7 @@ class ContactApiTest extends ApiTestCase
             'name' => 'Camille Bernard',
             'email' => 'camille@example.com',
             'subject' => 'Demande de demonstration',
-            'message' => 'Bonjour, je souhaite planifier une demonstration de la Plateforme LocImmo.',
+            'message' => 'Bonjour, je souhaite planifier une demonstration de la Plateforme ImmoPlus.',
         ]);
 
         self::assertResponseStatusCodeSame(201);
@@ -48,7 +48,7 @@ class ContactApiTest extends ApiTestCase
     public function testAdminCanListContactMessages(): void
     {
         $admin = $this->createUser([
-            'email' => 'admin-contact@LocImmo.test',
+            'email' => 'admin-contact@ImmoPlus.test',
             'role' => 'admin',
         ]);
 
@@ -76,7 +76,7 @@ class ContactApiTest extends ApiTestCase
     public function testNonAdminCannotListContactMessages(): void
     {
         $participant = $this->createUser([
-            'email' => 'participant-contact@LocImmo.test',
+            'email' => 'participant-contact@ImmoPlus.test',
             'role' => 'participant',
         ]);
 
@@ -88,7 +88,7 @@ class ContactApiTest extends ApiTestCase
     public function testAdminCanUpdateContactMessageStatus(): void
     {
         $admin = $this->createUser([
-            'email' => 'admin-status@LocImmo.test',
+            'email' => 'admin-status@ImmoPlus.test',
             'role' => 'admin',
         ]);
 

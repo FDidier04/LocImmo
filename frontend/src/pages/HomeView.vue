@@ -106,7 +106,7 @@ function formatStayPrice(value) {
     <div class="glass p-8 md:p-10">
       <div class="section-label mb-3">Offres immobilieres en Afrique centrale et de l'Ouest</div>
       <h2 class="text-3xl md:text-4xl font-extrabold text-main">
-        LocImmo connecte acheteurs, locataires, proprietaires et agences
+        Immo+ connecte acheteurs, locataires, proprietaires et agences
       </h2>
       <p class="mt-4 max-w-3xl text-base leading-7 text-sub">
         Publiez et trouvez des offres immobilieres au Congo, au Gabon, au Cameroun, au Senegal et en Cote d'Ivoire avec une API Symfony,

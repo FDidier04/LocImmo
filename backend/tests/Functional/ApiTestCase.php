@@ -72,7 +72,7 @@ abstract class ApiTestCase extends WebTestCase
 
         $user = new User();
         $user
-            ->setEmail($overrides['email'] ?? "user{$counter}@LocImmo.test")
+            ->setEmail($overrides['email'] ?? "user{$counter}@ImmoPlus.test")
             ->setFirstName($overrides['firstName'] ?? 'Test')
             ->setLastName($overrides['lastName'] ?? 'User')
             ->setPhone($overrides['phone'] ?? '0600000000')

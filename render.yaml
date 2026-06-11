@@ -1,14 +1,14 @@
 databases:
-  - name: locimmo-db
+  - name: immoplus-db
     plan: free
     region: frankfurt
-    databaseName: locimmo
-    user: locimmo
+    databaseName: immoplus
+    user: immoplus
     postgresMajorVersion: "16"
 
 services:
   - type: web
-    name: locimmo-api
+    name: immoplus-api
     runtime: docker
     rootDir: backend
     dockerfilePath: ./Dockerfile.render
@@ -25,7 +25,7 @@ services:
         generateValue: true
       - key: DATABASE_URL
         fromDatabase:
-          name: locimmo-db
+          name: immoplus-db
           property: connectionString
       - key: JWT_SECRET_KEY
         value: /app/var/jwt/private.pem
@@ -44,7 +44,7 @@ services:
 
   - type: web
     runtime: static
-    name: locimmo-front
+    name: immoplus-front
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
