@@ -7,13 +7,21 @@ const eventsStore = useEventsStore()
 const userStore = useAuthStore()
 
 const q = ref('')
+const country = ref('')
 const city = ref('')
 const propertyType = ref('')
 const offerType = ref('')
 const maxRent = ref('')
 const sortBy = ref('recent')
 
-const cities = ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi']
+const countries = ['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal']
+const citiesByCountry = {
+  'Republique du Congo': ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'],
+  Gabon: ['Libreville', 'Port-Gentil'],
+  Cameroun: ['Douala', 'Yaounde'],
+  Senegal: ['Dakar', 'Saly', 'Saint-Louis'],
+}
+const cities = computed(() => country.value ? (citiesByCountry[country.value] || []) : Object.values(citiesByCountry).flat())
 const propertyTypes = ['Appartement', 'Maison', 'Studio', 'Villa', 'Bureau', 'Terrain']
 const offerTypes = ['Location', 'Vente']
 
@@ -31,6 +39,7 @@ function matchText(property) {
     property.title,
     property.description,
     property.location,
+    property.country,
     property.city,
     property.district,
     property.propertyType,
@@ -43,6 +52,7 @@ const filteredEvents = computed(() => {
   let list = [...eventsStore.events]
 
   if (search) list = list.filter((property) => matchText(property).includes(search))
+  if (country.value) list = list.filter((property) => property.country === country.value)
   if (city.value) list = list.filter((property) => property.city === city.value)
   if (propertyType.value) list = list.filter((property) => property.propertyType === propertyType.value)
   if (offerType.value) list = list.filter((property) => property.offerType === offerType.value)
@@ -66,14 +76,18 @@ async function handleDelete(id) {
     <div class="mb-8">
       <div class="section-label mb-2">Catalogue</div>
       <h1 class="text-3xl font-extrabold text-main">Offres immobilieres</h1>
-      <p class="mt-2 text-sm text-sub">Trouvez une location, une vente, un logement ou un local dans les principales villes du Congo.</p>
+      <p class="mt-2 text-sm text-sub">Trouvez une location, une vente, un logement ou un local au Congo, au Gabon, au Cameroun ou au Senegal.</p>
     </div>
 
-    <div class="grid gap-3 mb-10 lg:grid-cols-[1.3fr_0.75fr_0.75fr_0.75fr_0.75fr_0.7fr]">
+    <div class="grid gap-3 mb-10 lg:grid-cols-[1.25fr_0.75fr_0.75fr_0.75fr_0.75fr_0.75fr_0.7fr]">
       <input v-model="q" placeholder="Rechercher par quartier, ville, type..." class="LI-input h-12" />
       <select v-model="offerType" class="LI-input h-12">
         <option value="">Toutes les offres</option>
         <option v-for="item in offerTypes" :key="item" :value="item">{{ item }}</option>
+      </select>
+      <select v-model="country" class="LI-input h-12" @change="city = ''">
+        <option value="">Tous les pays</option>
+        <option v-for="item in countries" :key="item" :value="item">{{ item }}</option>
       </select>
       <select v-model="city" class="LI-input h-12">
         <option value="">Toutes les villes</option>
@@ -123,7 +137,7 @@ async function handleDelete(id) {
         <div class="flex items-center justify-between gap-3">
           <span class="badge-green">{{ property.offerType || 'Location' }}</span>
           <span class="badge-orange">{{ property.propertyType || 'Bien' }}</span>
-          <span class="text-xs text-muted">{{ property.city }}</span>
+          <span class="text-xs text-muted">{{ property.city }} · {{ property.country }}</span>
         </div>
 
         <router-link :to="`/events/${property.id}`" class="mt-4 text-xl font-extrabold text-main hover:text-orange-500 transition">

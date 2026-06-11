@@ -29,14 +29,14 @@ onMounted(async () => {
 })
 
 const mapEmbedUrl = computed(() => {
-  const location = [property.value?.location, property.value?.district, property.value?.city, 'Republic of the Congo'].filter(Boolean).join(', ')
+  const location = [property.value?.location, property.value?.district, property.value?.city, property.value?.country].filter(Boolean).join(', ')
   if (!location.trim()) return ''
 
   return `https://maps.google.com/maps?q=${encodeURIComponent(location)}&z=15&output=embed`
 })
 
 const mapSearchUrl = computed(() => {
-  const location = [property.value?.location, property.value?.district, property.value?.city, 'Republic of the Congo'].filter(Boolean).join(', ')
+  const location = [property.value?.location, property.value?.district, property.value?.city, property.value?.country].filter(Boolean).join(', ')
   if (!location.trim()) return ''
 
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`
@@ -88,7 +88,7 @@ async function requestVisit() {
           <span class="badge-green">{{ property.offerType || 'Location' }}</span>
           <span class="badge-purple">{{ property.propertyType || 'Bien' }}</span>
           <span class="badge-orange" v-if="!property.isPublished">brouillon</span>
-          <span class="text-sm text-muted">{{ property.city }} - {{ property.district }}</span>
+          <span class="text-sm text-muted">{{ property.city }} - {{ property.country }} - {{ property.district }}</span>
         </div>
 
         <h1 class="mt-4 text-3xl md:text-4xl font-extrabold text-main">{{ property.title }}</h1>
@@ -120,7 +120,7 @@ async function requestVisit() {
           <div class="section-label mb-2">Adresse</div>
           <h2 class="text-2xl font-extrabold text-main">{{ property.location }}</h2>
           <p class="mt-3 text-sm leading-6 text-sub">
-            {{ property.district }}, {{ property.city }}. Les informations detaillees de visite sont confirmees apres votre demande.
+            {{ property.district }}, {{ property.city }}, {{ property.country }}. Les informations detaillees de visite sont confirmees apres votre demande.
           </p>
           <div class="mt-5 text-sm text-sub">
             Contact : {{ property.organizer?.firstName }} {{ property.organizer?.lastName }}

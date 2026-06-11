@@ -6,12 +6,22 @@ import { useAuthStore } from '../stores/auth'
 const eventsStore = useEventsStore()
 const authStore = useAuthStore()
 
-const cities = ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi']
-const searchDestinations = ['Brazzaville', 'Pointe-Noire', 'Dolisie', 'Nkayi']
+const markets = [
+  { country: 'Republique du Congo', cities: ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'] },
+  { country: 'Gabon', cities: ['Libreville', 'Port-Gentil'] },
+  { country: 'Cameroun', cities: ['Douala', 'Yaounde'] },
+  { country: 'Senegal', cities: ['Dakar', 'Saly', 'Saint-Louis'] },
+]
+
+const searchDestinations = markets.flatMap((market) =>
+  market.cities.map((city) => `${city}, ${market.country}`)
+)
+
 const popularStays = [
   {
     type: 'Appartement',
     city: 'Brazzaville',
+    country: 'Republique du Congo',
     dates: '3-5 juil.',
     host: 'Particulier',
     price: 45000,
@@ -21,7 +31,8 @@ const popularStays = [
   {
     type: 'Studio',
     city: 'Pointe-Noire',
-    dates: '12-14 août',
+    country: 'Republique du Congo',
+    dates: '12-14 aout',
     host: 'Agence',
     price: 38000,
     rating: '4,93',
@@ -29,7 +40,8 @@ const popularStays = [
   },
   {
     type: 'Villa',
-    city: 'Brazzaville',
+    city: 'Libreville',
+    country: 'Gabon',
     dates: '26-28 juin',
     host: 'Particulier',
     price: 95000,
@@ -38,7 +50,8 @@ const popularStays = [
   },
   {
     type: 'Chambre',
-    city: 'Dolisie',
+    city: 'Douala',
+    country: 'Cameroun',
     dates: '8-10 sept.',
     host: 'Particulier',
     price: 25000,
@@ -47,16 +60,18 @@ const popularStays = [
   },
   {
     type: 'Appartement',
-    city: 'Nkayi',
+    city: 'Dakar',
+    country: 'Senegal',
     dates: '2-4 oct.',
     host: 'Agence',
-    price: 32000,
+    price: 52000,
     rating: '4,84',
     image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80',
   },
   {
     type: 'Maison',
-    city: 'Pointe-Noire',
+    city: 'Saly',
+    country: 'Senegal',
     dates: '15-18 nov.',
     host: 'Particulier',
     price: 70000,
@@ -88,10 +103,12 @@ function formatStayPrice(value) {
 <template>
   <section class="space-y-10">
     <div class="glass p-8 md:p-10">
-      <div class="section-label mb-3">Offres immobilieres au Congo</div>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-main">LocImmo connecte acheteurs, locataires, proprietaires et agences</h2>
+      <div class="section-label mb-3">Offres immobilieres en Afrique centrale et de l'Ouest</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-main">
+        LocImmo connecte acheteurs, locataires, proprietaires et agences
+      </h2>
       <p class="mt-4 max-w-3xl text-base leading-7 text-sub">
-        Publiez et trouvez des offres immobilieres a Brazzaville, Dolisie, Pointe-Noire et Nkayi avec une API Symfony,
+        Publiez et trouvez des offres immobilieres au Congo, au Gabon, au Cameroun et au Senegal avec une API Symfony,
         une interface Vue moderne, l'authentification JWT et une base RGPD deja structuree.
       </p>
 
@@ -109,7 +126,9 @@ function formatStayPrice(value) {
           <span>Destination</span>
           <select aria-label="Destination">
             <option value="">Rechercher une destination</option>
-            <option v-for="destination in searchDestinations" :key="destination" :value="destination">{{ destination }}</option>
+            <option v-for="destination in searchDestinations" :key="destination" :value="destination">
+              {{ destination }}
+            </option>
           </select>
         </label>
         <label class="rbnb-search-segment">
@@ -130,7 +149,7 @@ function formatStayPrice(value) {
 
     <section class="space-y-5">
       <div class="flex items-center justify-between gap-4">
-        <h3 class="text-2xl md:text-3xl font-extrabold text-main">Logements populaires · République du Congo</h3>
+        <h3 class="text-2xl md:text-3xl font-extrabold text-main">Logements populaires - Afrique francophone</h3>
         <div class="hidden items-center gap-2 md:flex">
           <button class="rbnb-arrow is-muted" aria-label="Precedent">‹</button>
           <button class="rbnb-arrow" aria-label="Suivant">›</button>
@@ -138,10 +157,10 @@ function formatStayPrice(value) {
       </div>
 
       <div class="rbnb-row">
-        <article v-for="stay in popularStays" :key="`${stay.type}-${stay.city}-${stay.dates}`" class="rbnb-card">
+        <article v-for="stay in popularStays" :key="`${stay.type}-${stay.city}-${stay.country}-${stay.dates}`" class="rbnb-card">
           <div class="rbnb-image-wrap">
             <img :src="stay.image" :alt="`${stay.type} a ${stay.city}`" class="rbnb-image" loading="lazy" />
-            <div class="rbnb-favorite-badge">Coup de cœur voyageurs</div>
+            <div class="rbnb-favorite-badge">Coup de coeur voyageurs</div>
             <button class="rbnb-heart" aria-label="Ajouter aux favoris">
               <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
@@ -150,7 +169,7 @@ function formatStayPrice(value) {
           </div>
           <div class="mt-3">
             <h4 class="text-lg font-extrabold text-main">{{ stay.type }} · {{ stay.city }}</h4>
-            <p class="text-sm text-sub">{{ stay.dates }} · {{ stay.host }}</p>
+            <p class="text-sm text-sub">{{ stay.country }} · {{ stay.dates }} · {{ stay.host }}</p>
             <p class="text-sm text-sub">{{ formatStayPrice(stay.price) }} · ★ {{ stay.rating }}</p>
           </div>
         </article>
@@ -158,9 +177,10 @@ function formatStayPrice(value) {
     </section>
 
     <section class="grid gap-4 md:grid-cols-4">
-      <article v-for="city in cities" :key="city" class="LI-card p-5">
-        <div class="section-label mb-2">Ville</div>
-        <h3 class="text-xl font-extrabold text-main">{{ city }}</h3>
+      <article v-for="market in markets" :key="market.country" class="LI-card p-5">
+        <div class="section-label mb-2">Pays</div>
+        <h3 class="text-xl font-extrabold text-main">{{ market.country }}</h3>
+        <p class="mt-2 text-sm text-sub">{{ market.cities.join(', ') }}</p>
         <p class="mt-2 text-sm text-sub">Locations, ventes, appartements, maisons, studios et bureaux disponibles.</p>
       </article>
     </section>
@@ -187,7 +207,7 @@ function formatStayPrice(value) {
           <div class="flex items-center justify-between gap-3">
             <span class="badge-green">{{ property.offerType || 'Location' }}</span>
             <span class="badge-orange">{{ property.propertyType || 'Bien' }}</span>
-            <span class="text-xs text-muted">{{ property.city }}</span>
+            <span class="text-xs text-muted">{{ property.city }} · {{ property.country }}</span>
           </div>
           <h4 class="mt-4 text-xl font-extrabold text-main">{{ property.title }}</h4>
           <p class="mt-3 line-clamp-3 text-sm leading-6 text-sub">{{ property.description }}</p>

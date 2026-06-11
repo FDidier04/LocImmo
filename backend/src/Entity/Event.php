@@ -40,7 +40,17 @@ class Event
 
     #[ORM\Column(length: 80)]
     #[Assert\NotBlank]
-    #[Assert\Choice(['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'])]
+    #[Assert\Choice(['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal'])]
+    private ?string $country = 'Republique du Congo';
+
+    #[ORM\Column(length: 80)]
+    #[Assert\NotBlank]
+    #[Assert\Choice([
+        'Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi',
+        'Libreville', 'Port-Gentil',
+        'Douala', 'Yaounde',
+        'Dakar', 'Saly', 'Saint-Louis'
+    ])]
     private ?string $city = null;
 
     #[ORM\Column(length: 120)]
@@ -115,6 +125,9 @@ class Event
 
     public function getLocation(): ?string { return $this->location; }
     public function setLocation(string $location): static { $this->location = $location; return $this; }
+
+    public function getCountry(): ?string { return $this->country; }
+    public function setCountry(string $country): static { $this->country = $country; return $this; }
 
     public function getCity(): ?string { return $this->city; }
     public function setCity(string $city): static { $this->city = $city; return $this; }

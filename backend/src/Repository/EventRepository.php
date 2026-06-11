@@ -23,6 +23,11 @@ class EventRepository extends ServiceEntityRepository
                 ->setParameter('city', $filters['city']);
         }
 
+        if (!empty($filters['country'])) {
+            $qb->andWhere('e.country = :country')
+                ->setParameter('country', $filters['country']);
+        }
+
         if (!empty($filters['propertyType'])) {
             $qb->andWhere('e.propertyType = :propertyType')
                 ->setParameter('propertyType', $filters['propertyType']);

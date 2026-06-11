@@ -21,6 +21,7 @@ class EventController extends AbstractController
     public function list(EventRepository $repo, Request $request): JsonResponse
     {
         $events = $repo->findPublished([
+            'country' => $request->query->get('country'),
             'city' => $request->query->get('city'),
             'propertyType' => $request->query->get('propertyType'),
             'offerType' => $request->query->get('offerType'),
@@ -78,6 +79,7 @@ class EventController extends AbstractController
         $event->setTitle($data['title'] ?? '');
         $event->setDescription($data['description'] ?? '');
         $event->setLocation($data['location'] ?? '');
+        $event->setCountry($data['country'] ?? 'Republique du Congo');
         $event->setCity($data['city'] ?? '');
         $event->setDistrict($data['district'] ?? '');
         $event->setPropertyType($data['propertyType'] ?? '');
@@ -144,6 +146,7 @@ class EventController extends AbstractController
         if (isset($data['title']))           $event->setTitle($data['title']);
         if (isset($data['description']))     $event->setDescription($data['description']);
         if (isset($data['location']))        $event->setLocation($data['location']);
+        if (isset($data['country']))         $event->setCountry($data['country']);
         if (isset($data['city']))            $event->setCity($data['city']);
         if (isset($data['district']))        $event->setDistrict($data['district']);
         if (isset($data['propertyType']))    $event->setPropertyType($data['propertyType']);
@@ -222,6 +225,7 @@ class EventController extends AbstractController
             'eventDate'          => $event->getEventDate()?->format('c'),
             'endDate'            => $event->getEndDate()?->format('c'),
             'location'           => $event->getLocation(),
+            'country'            => $event->getCountry(),
             'city'               => $event->getCity(),
             'district'           => $event->getDistrict(),
             'propertyType'       => $event->getPropertyType(),

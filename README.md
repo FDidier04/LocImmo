@@ -1,6 +1,6 @@
 # LocImmo
 
-Plateforme de publication d'offres immobilieres pour la Republique du Congo, ciblee sur Brazzaville, Dolisie, Pointe-Noire et Nkayi.
+Plateforme de publication d'offres immobilieres et de logements courte duree pour l'Afrique francophone, ciblee sur le Congo, le Gabon, le Cameroun et le Senegal.
 
 Stack reprise du projet de reference :
 - Symfony 6.4 pour l'API REST
@@ -14,7 +14,7 @@ Stack reprise du projet de reference :
 
 - consultation publique des offres immobilieres
 - publication d'offres de location et de vente
-- filtres par ville, type d'offre, type de bien et budget
+- filtres par pays, ville, type d'offre, type de bien et budget
 - publication d'annonces par bailleurs/agences connectes
 - types de biens : appartement, maison, studio, villa, bureau, terrain
 - fiche detaillee : quartier, adresse/repere, prix, surface, chambres, salles d'eau
@@ -70,7 +70,7 @@ Application : `http://localhost`
 | Methode | Endpoint | Acces | Description |
 |---|---|---|---|
 | GET | `/api/properties` | Public | Liste des offres publiees |
-| GET | `/api/properties?city=Brazzaville&offerType=Location&propertyType=Appartement&maxRent=250000` | Public | Liste filtree |
+| GET | `/api/properties?country=Gabon&city=Libreville&offerType=Location&propertyType=Appartement&maxRent=250000` | Public | Liste filtree |
 | GET | `/api/properties/{id}` | Public | Detail d'une offre |
 | POST | `/api/properties` | Bailleur/agence/admin | Creer une offre |
 | PUT | `/api/properties/{id}` | Proprietaire/admin | Modifier une offre |
@@ -99,4 +99,5 @@ Frontend :
 - Ne pas commiter les fichiers `.env`.
 - Ne pas commiter les cles JWT privees.
 - Les types d'offre autorises sont `Location` et `Vente`.
-- Les villes autorisees par validation backend sont `Brazzaville`, `Dolisie`, `Pointe-Noire` et `Nkayi`.
+- Les pays autorises par validation backend sont `Republique du Congo`, `Gabon`, `Cameroun` et `Senegal`.
+- Les villes autorisees par validation backend sont `Brazzaville`, `Dolisie`, `Pointe-Noire`, `Nkayi`, `Libreville`, `Port-Gentil`, `Douala`, `Yaounde`, `Dakar`, `Saly` et `Saint-Louis`.

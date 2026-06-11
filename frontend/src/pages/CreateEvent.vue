@@ -7,7 +7,13 @@ const route = useRoute()
 const router = useRouter()
 const eventsStore = useEventsStore()
 
-const cities = ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi']
+const countries = ['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal']
+const citiesByCountry = {
+  'Republique du Congo': ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'],
+  Gabon: ['Libreville', 'Port-Gentil'],
+  Cameroun: ['Douala', 'Yaounde'],
+  Senegal: ['Dakar', 'Saly', 'Saint-Louis'],
+}
 const propertyTypes = ['Appartement', 'Maison', 'Studio', 'Villa', 'Bureau', 'Terrain']
 const offerTypes = ['Location', 'Vente']
 
@@ -17,6 +23,7 @@ const form = reactive({
   eventDate: '',
   endDate: '',
   location: '',
+  country: 'Republique du Congo',
   city: 'Brazzaville',
   district: '',
   propertyType: 'Appartement',
@@ -29,6 +36,7 @@ const form = reactive({
   maxParticipants: 10,
   isPublished: false,
 })
+const cities = computed(() => citiesByCountry[form.country] || citiesByCountry['Republique du Congo'])
 const errors = ref({})
 const loadingInitial = ref(false)
 
@@ -57,6 +65,7 @@ onMounted(async () => {
       eventDate: toDatetimeLocal(source.eventDate),
       endDate: toDatetimeLocal(source.endDate),
       location: source.location || '',
+      country: source.country || 'Republique du Congo',
       city: source.city || 'Brazzaville',
       district: source.district || '',
       propertyType: source.propertyType || 'Appartement',
@@ -114,7 +123,7 @@ async function submit() {
       <div class="section-label mb-3">Annonce immobiliere</div>
       <h1 class="text-3xl font-extrabold text-main">{{ pageTitle }}</h1>
       <p class="text-sub text-sm mt-2">
-        Renseignez les informations utiles pour publier une offre immobiliere a Brazzaville, Dolisie, Pointe-Noire ou Nkayi.
+        Renseignez les informations utiles pour publier une offre immobiliere au Congo, au Gabon, au Cameroun ou au Senegal.
       </p>
     </div>
 
@@ -142,6 +151,13 @@ async function submit() {
       </div>
 
       <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-muted uppercase tracking-wider mb-2">Pays *</label>
+          <select v-model="form.country" class="LI-input" @change="form.city = cities[0]">
+            <option v-for="item in countries" :key="item" :value="item">{{ item }}</option>
+          </select>
+          <p v-if="errors.country" class="text-xs text-red-500 mt-1">{{ errors.country }}</p>
+        </div>
         <div>
           <label class="block text-xs font-semibold text-muted uppercase tracking-wider mb-2">Ville *</label>
           <select v-model="form.city" class="LI-input">
