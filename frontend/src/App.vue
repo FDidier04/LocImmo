@@ -116,6 +116,7 @@ onMounted(async () => {
         </router-link>
 
         <nav class="hidden items-center gap-6 md:flex">
+          <router-link class="nav-link nav-tab" to="/">{{ t.home }}</router-link>
           <router-link class="nav-link nav-tab" :to="{ path: '/events', query: { offerType: 'Vente' } }">{{ t.buy }}</router-link>
           <div class="nav-dropdown">
             <router-link class="nav-link nav-tab nav-dropdown-trigger" :to="{ path: '/events', query: { offerType: 'Location' } }">
@@ -133,6 +134,7 @@ onMounted(async () => {
           <router-link v-if="userStore.isAuthenticated" class="nav-link" to="/dashboard">{{ t.dashboard }}</router-link>
           <router-link v-if="userStore.isOrganizer" class="nav-link" to="/events/create">{{ t.publish }}</router-link>
           <router-link v-if="userStore.isAdmin" class="nav-link" to="/admin">{{ t.admin }}</router-link>
+          <router-link class="nav-link" to="/contact">{{ t.contact }}</router-link>
           <router-link class="nav-link" to="/privacy">{{ t.privacy }}</router-link>
         </nav>
 
@@ -185,6 +187,7 @@ onMounted(async () => {
 
       <Transition name="slide-up">
         <div v-if="mobileOpen" class="space-y-1 border-t px-6 py-4 md:hidden" style="border-color:var(--border);background:var(--bg-card)">
+          <router-link @click="mobileOpen=false" class="block py-2 text-sm font-bold text-sub hover:text-main" to="/">{{ t.home }}</router-link>
           <router-link @click="mobileOpen=false" class="block py-2 text-sm font-bold text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Vente' } }">{{ t.buy }}</router-link>
           <router-link @click="mobileOpen=false" class="block py-2 text-sm font-bold text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Location' } }">{{ t.rent }}</router-link>
           <router-link @click="mobileOpen=false" class="block py-2 pl-4 text-sm text-sub hover:text-main" :to="{ path: '/events', query: { offerType: 'Location', rentalMode: 'seasonal' } }">{{ t.seasonalRentals }}</router-link>
