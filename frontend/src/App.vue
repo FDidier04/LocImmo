@@ -134,7 +134,7 @@ onMounted(async () => {
           <router-link v-if="userStore.isAuthenticated" class="nav-link" to="/dashboard">{{ t.dashboard }}</router-link>
           <router-link v-if="userStore.isOrganizer" class="nav-link" to="/events/create">{{ t.publish }}</router-link>
           <router-link v-if="userStore.isAdmin" class="nav-link" to="/admin">{{ t.admin }}</router-link>
-          <router-link class="nav-link" to="/contact">{{ t.contact }}</router-link>
+          <router-link class="nav-link nav-tab" to="/contact">{{ t.contact }}</router-link>
           <router-link class="nav-link" to="/privacy">{{ t.privacy }}</router-link>
         </nav>
 
