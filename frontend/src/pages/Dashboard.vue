@@ -31,6 +31,68 @@ const cities = computed(() => country.value ? (citiesByCountry[country.value] ||
 const propertyTypes = ['Appartement', 'Maison', 'Studio', 'Villa', 'Bureau', 'Terrain']
 const offerTypes = ['Location', 'Vente']
 
+const buyShowcase = [
+  {
+    type: 'Villa',
+    city: 'Abidjan',
+    country: "Cote d'Ivoire",
+    price: '95 000 000 FCFA',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    type: 'Maison',
+    city: 'Libreville',
+    country: 'Gabon',
+    price: '72 000 000 FCFA',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    type: 'Appartement',
+    city: 'Dakar',
+    country: 'Senegal',
+    price: '48 000 000 FCFA',
+    image: 'https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    type: 'Terrain',
+    city: 'Pointe-Noire',
+    country: 'Republique du Congo',
+    price: '28 000 000 FCFA',
+    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=80',
+  },
+]
+
+const rentShowcase = [
+  {
+    type: 'Appartement meuble',
+    city: 'Brazzaville',
+    country: 'Republique du Congo',
+    price: '45 000 FCFA au total',
+    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    type: 'Studio',
+    city: 'Cotonou',
+    country: 'Benin',
+    price: '36 000 FCFA au total',
+    image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    type: 'Villa',
+    city: 'Saly',
+    country: 'Senegal',
+    price: '75 000 FCFA au total',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    type: 'Chambre',
+    city: 'Douala',
+    country: 'Cameroun',
+    price: '25 000 FCFA au total',
+    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=700&q=80',
+  },
+]
+
 function syncFiltersFromQuery(query) {
   offerType.value = typeof query.offerType === 'string' ? query.offerType : ''
   rentalMode.value = typeof query.rentalMode === 'string' ? query.rentalMode : ''
@@ -53,6 +115,13 @@ const pageTitle = computed(() => {
   if (rentalMode.value === 'long-term') return 'Locations longue duree'
   if (offerType.value === 'Location') return 'Louer'
   return 'Offres immobilieres'
+})
+
+const showImageCarousel = computed(() => offerType.value === 'Vente' || offerType.value === 'Location')
+const showcaseTitle = computed(() => offerType.value === 'Vente' ? 'Biens a acheter' : 'Logements en location')
+const showcaseItems = computed(() => {
+  const source = offerType.value === 'Vente' ? buyShowcase : rentShowcase
+  return [...source, ...source]
 })
 
 function formatPrice(property) {
@@ -106,6 +175,28 @@ async function handleDelete(id) {
       <h1 class="text-3xl font-extrabold text-main">{{ pageTitle }}</h1>
       <p class="mt-2 text-sm text-sub">Trouvez une location, une vente, un logement ou un local au Congo, au Gabon, au Cameroun, au Senegal, en Cote d'Ivoire, au Benin ou en Republique Centrafricaine.</p>
     </div>
+
+    <section v-if="showImageCarousel" class="mb-10 space-y-5">
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="text-2xl font-extrabold text-main">{{ showcaseTitle }}</h2>
+        <router-link to="/events" class="btn-ghost text-sm">Voir tout</router-link>
+      </div>
+
+      <div class="rbnb-row-viewport">
+        <div class="rbnb-row is-scrolling">
+          <article v-for="(item, index) in showcaseItems" :key="`${item.type}-${item.city}-${index}`" class="rbnb-card">
+            <div class="rbnb-image-wrap">
+              <img :src="item.image" :alt="`${item.type} a ${item.city}`" class="rbnb-image" loading="lazy" />
+              <div class="rbnb-favorite-badge">{{ item.type }}</div>
+            </div>
+            <div class="mt-3">
+              <h3 class="text-lg font-extrabold text-main">{{ item.city }} · {{ item.country }}</h3>
+              <p class="text-sm text-sub">{{ item.price }}</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <div class="grid gap-3 mb-10 lg:grid-cols-[1.25fr_0.75fr_0.75fr_0.75fr_0.75fr_0.75fr_0.7fr]">
       <input v-model="q" placeholder="Rechercher par quartier, ville, type..." class="LI-input h-12" />

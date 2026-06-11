@@ -16,10 +16,6 @@ const markets = [
   { country: 'Republique Centrafricaine', cities: ['Bangui', 'Bimbo'] },
 ]
 
-const searchDestinations = markets.flatMap((market) =>
-  market.cities.map((city) => `${city}, ${market.country}`)
-)
-
 const popularStays = [
   {
     type: 'Appartement',
@@ -144,33 +140,6 @@ function formatStayPrice(value) {
         <router-link v-else to="/login" class="btn-outline">Se connecter</router-link>
       </div>
     </div>
-
-    <section class="rbnb-search-wrap">
-      <div class="rbnb-search">
-        <label class="rbnb-search-segment">
-          <span>Destination</span>
-          <select aria-label="Destination">
-            <option value="">Rechercher une destination</option>
-            <option v-for="destination in searchDestinations" :key="destination" :value="destination">
-              {{ destination }}
-            </option>
-          </select>
-        </label>
-        <label class="rbnb-search-segment">
-          <span>Dates</span>
-          <input type="text" placeholder="Quand ?" aria-label="Dates" />
-        </label>
-        <label class="rbnb-search-segment">
-          <span>Voyageurs</span>
-          <input type="text" placeholder="Ajouter des voyageurs" aria-label="Voyageurs" />
-        </label>
-        <router-link to="/events" class="rbnb-search-button" aria-label="Rechercher">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"/>
-          </svg>
-        </router-link>
-      </div>
-    </section>
 
     <section class="space-y-5">
       <div class="flex items-center justify-between gap-4">
