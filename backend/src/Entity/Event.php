@@ -47,9 +47,9 @@ class Event
     #[Assert\NotBlank]
     #[Assert\Choice([
         'Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi',
-        'Libreville', 'Port-Gentil',
-        'Douala', 'Yaounde',
-        'Dakar', 'Saly', 'Saint-Louis',
+        'Libreville', 'Port-Gentil', 'Franceville', 'Oyem',
+        'Douala', 'Yaounde', 'Bafoussam', 'Garoua',
+        'Dakar', 'Saly', 'Saint-Louis', 'Thies',
         'Abidjan', 'Yamoussoukro', 'Bouake', 'San-Pedro'
     ])]
     private ?string $city = null;

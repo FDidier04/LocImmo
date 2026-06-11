@@ -100,4 +100,4 @@ Frontend :
 - Ne pas commiter les cles JWT privees.
 - Les types d'offre autorises sont `Location` et `Vente`.
 - Les pays autorises par validation backend sont `Republique du Congo`, `Gabon`, `Cameroun`, `Senegal` et `Cote d'Ivoire`.
-- Les villes autorisees par validation backend sont `Brazzaville`, `Dolisie`, `Pointe-Noire`, `Nkayi`, `Libreville`, `Port-Gentil`, `Douala`, `Yaounde`, `Dakar`, `Saly`, `Saint-Louis`, `Abidjan`, `Yamoussoukro`, `Bouake` et `San-Pedro`.
+- Les villes autorisees par validation backend sont `Brazzaville`, `Dolisie`, `Pointe-Noire`, `Nkayi`, `Libreville`, `Port-Gentil`, `Franceville`, `Oyem`, `Douala`, `Yaounde`, `Bafoussam`, `Garoua`, `Dakar`, `Saly`, `Saint-Louis`, `Thies`, `Abidjan`, `Yamoussoukro`, `Bouake` et `San-Pedro`.

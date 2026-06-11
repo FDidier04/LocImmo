@@ -10,9 +10,9 @@ const eventsStore = useEventsStore()
 const countries = ['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal', "Cote d'Ivoire"]
 const citiesByCountry = {
   'Republique du Congo': ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'],
-  Gabon: ['Libreville', 'Port-Gentil'],
-  Cameroun: ['Douala', 'Yaounde'],
-  Senegal: ['Dakar', 'Saly', 'Saint-Louis'],
+  Gabon: ['Libreville', 'Port-Gentil', 'Franceville', 'Oyem'],
+  Cameroun: ['Douala', 'Yaounde', 'Bafoussam', 'Garoua'],
+  Senegal: ['Dakar', 'Saly', 'Saint-Louis', 'Thies'],
   "Cote d'Ivoire": ['Abidjan', 'Yamoussoukro', 'Bouake', 'San-Pedro'],
 }
 const propertyTypes = ['Appartement', 'Maison', 'Studio', 'Villa', 'Bureau', 'Terrain']

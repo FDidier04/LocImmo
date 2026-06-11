@@ -8,9 +8,9 @@ const authStore = useAuthStore()
 
 const markets = [
   { country: 'Republique du Congo', cities: ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'] },
-  { country: 'Gabon', cities: ['Libreville', 'Port-Gentil'] },
-  { country: 'Cameroun', cities: ['Douala', 'Yaounde'] },
-  { country: 'Senegal', cities: ['Dakar', 'Saly', 'Saint-Louis'] },
+  { country: 'Gabon', cities: ['Libreville', 'Port-Gentil', 'Franceville', 'Oyem'] },
+  { country: 'Cameroun', cities: ['Douala', 'Yaounde', 'Bafoussam', 'Garoua'] },
+  { country: 'Senegal', cities: ['Dakar', 'Saly', 'Saint-Louis', 'Thies'] },
   { country: "Cote d'Ivoire", cities: ['Abidjan', 'Yamoussoukro', 'Bouake', 'San-Pedro'] },
 ]
 
