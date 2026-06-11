@@ -5,7 +5,7 @@ $kernel = new App\Kernel('dev', true);
 $kernel->boot();
 $em = $kernel->getContainer()->get('doctrine')->getManager();
 $repo = $em->getRepository(App\Entity\User::class);
-$user = $repo->findOneBy(['email' => 'admin@ImmoPlus.local']);
+$user = $repo->findOneBy(['email' => 'admin@ImmoHub.local']);
 if (!$user) {
     echo "not_found\n";
     exit(0);

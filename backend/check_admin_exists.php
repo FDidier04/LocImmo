@@ -8,7 +8,7 @@ $kernel = new Kernel('dev', true);
 $kernel->boot();
 $container = $kernel->getContainer();
 $em = $container->get('doctrine')->getManager();
-$admin = $em->getRepository(User::class)->findOneBy(['email' => 'admin@ImmoPlus.local']);
+$admin = $em->getRepository(User::class)->findOneBy(['email' => 'admin@ImmoHub.local']);
 var_dump((bool)$admin);
 if ($admin) {
     echo $admin->getId() . ' ' . $admin->getEmail() . ' ' . json_encode($admin->getRoles()) . "\n";

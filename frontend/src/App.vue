@@ -8,7 +8,7 @@ import CookieBanner from "./components/CookieBanner.vue"
 const userStore = useAuthStore()
 const route = useRoute()
 const mobileOpen = ref(false)
-const language = ref(localStorage.getItem("immo-plus-language") || "fr")
+const language = ref(localStorage.getItem("immo-hub-language") || "fr")
 const { isDark, toggle } = useTheme()
 
 const isHome = computed(() => route.path === "/")
@@ -33,7 +33,7 @@ const labels = {
     heroLabel: "Offres immobilieres en Afrique centrale et de l'Ouest",
     heroTitleLine1: "Trouver un bien,",
     heroTitleLine2: "simplement.",
-    heroCopy: "Immo+ centralise les offres immobilieres au Congo, au Gabon, au Cameroun, au Senegal et en Cote d'Ivoire, avec une experience moderne et securisee.",
+    heroCopy: "Immo Hub centralise les offres immobilieres au Congo, au Gabon, au Cameroun, au Senegal, en Cote d'Ivoire, au Benin et en Republique Centrafricaine, avec une experience moderne et securisee.",
     start: "Commencer gratuitement",
     rgpd: "Conforme RGPD",
     secure: "Sécurisé RS256",
@@ -63,7 +63,7 @@ const labels = {
     heroLabel: "Real estate offers in Central and West Africa",
     heroTitleLine1: "Find a property,",
     heroTitleLine2: "simply.",
-    heroCopy: "Immo+ centralizes real estate offers in Congo, Gabon, Cameroon, Senegal and Cote d'Ivoire, with a modern and secure experience.",
+    heroCopy: "Immo Hub centralizes real estate offers in Congo, Gabon, Cameroon, Senegal, Cote d'Ivoire, Benin and the Central African Republic, with a modern and secure experience.",
     start: "Get started for free",
     rgpd: "GDPR compliant",
     secure: "RS256 secured",
@@ -81,7 +81,7 @@ const t = computed(() => labels[language.value] || labels.fr)
 watch(
   language,
   (value) => {
-    localStorage.setItem("immo-plus-language", value)
+    localStorage.setItem("immo-hub-language", value)
     document.documentElement.lang = value
   },
   { immediate: true }
@@ -99,9 +99,9 @@ onMounted(async () => {
     <header class="sticky top-0 z-30 border-b backdrop-blur-xl" style="background:var(--bg-nav);border-color:var(--border)">
       <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-6">
         <router-link to="/" class="flex shrink-0 items-center gap-3">
-          <div class="grid h-8 w-8 place-items-center rounded-lg bg-orange-500 text-sm font-black text-white">I+</div>
+          <div class="grid h-8 w-8 place-items-center rounded-lg bg-orange-500 text-sm font-black text-white">IH</div>
           <span class="hidden text-base font-bold tracking-wide text-main sm:block" style="font-family:'Space Grotesk',sans-serif">
-            IMMO<span class="text-orange-500">+</span>
+            IMMO<span class="text-orange-500"> HUB</span>
           </span>
         </router-link>
 
@@ -233,7 +233,7 @@ onMounted(async () => {
     <footer class="footer-bar">
       <div class="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-8 lg:flex-row lg:items-center lg:justify-between">
         <div class="footer-left">
-          <span>© 2026 Immo+, Inc.</span>
+          <span>© 2026 Immo Hub, Inc.</span>
           <span class="footer-dot">·</span>
           <router-link to="/privacy">{{ t.legalPrivacy }}</router-link>
           <span class="footer-dot">·</span>

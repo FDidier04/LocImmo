@@ -413,6 +413,32 @@ html.dark {
     padding: 0.25rem 0.1rem 0.75rem;
     scroll-snap-type: x mandatory;
   }
+  .rbnb-row-viewport {
+    overflow: hidden;
+    padding: 0.25rem 0 0.75rem;
+  }
+  .rbnb-row.is-scrolling {
+    display: flex;
+    width: max-content;
+    overflow: visible;
+    padding: 0;
+    scroll-snap-type: none;
+    animation: rbnb-scroll 38s linear infinite;
+  }
+  .rbnb-row.is-scrolling:hover {
+    animation-play-state: paused;
+  }
+  .rbnb-row.is-scrolling .rbnb-card {
+    flex: 0 0 clamp(14rem, 19vw, 18rem);
+  }
+  @keyframes rbnb-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
   .rbnb-row::-webkit-scrollbar {
     height: 0.4rem;
   }
@@ -496,6 +522,9 @@ html.dark {
     }
     .rbnb-row {
       grid-auto-columns: minmax(14rem, 78vw);
+    }
+    .rbnb-row.is-scrolling .rbnb-card {
+      flex-basis: 78vw;
     }
   }
 

@@ -7,13 +7,15 @@ const route = useRoute()
 const router = useRouter()
 const eventsStore = useEventsStore()
 
-const countries = ['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal', "Cote d'Ivoire"]
+const countries = ['Republique du Congo', 'Gabon', 'Cameroun', 'Senegal', "Cote d'Ivoire", 'Benin', 'Republique Centrafricaine']
 const citiesByCountry = {
-  'Republique du Congo': ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'],
-  Gabon: ['Libreville', 'Port-Gentil', 'Franceville', 'Oyem'],
-  Cameroun: ['Douala', 'Yaounde', 'Bafoussam', 'Garoua'],
-  Senegal: ['Dakar', 'Saly', 'Saint-Louis', 'Thies'],
-  "Cote d'Ivoire": ['Abidjan', 'Yamoussoukro', 'Bouake', 'San-Pedro'],
+  'Republique du Congo': ['Brazzaville', 'Pointe-Noire'],
+  Gabon: ['Libreville', 'Port-Gentil'],
+  Cameroun: ['Douala', 'Yaounde'],
+  Senegal: ['Dakar', 'Saly'],
+  "Cote d'Ivoire": ['Abidjan', 'Yamoussoukro'],
+  Benin: ['Cotonou', 'Porto-Novo'],
+  'Republique Centrafricaine': ['Bangui', 'Bimbo'],
 }
 const propertyTypes = ['Appartement', 'Maison', 'Studio', 'Villa', 'Bureau', 'Terrain']
 const offerTypes = ['Location', 'Vente']
@@ -124,7 +126,7 @@ async function submit() {
       <div class="section-label mb-3">Annonce immobiliere</div>
       <h1 class="text-3xl font-extrabold text-main">{{ pageTitle }}</h1>
       <p class="text-sub text-sm mt-2">
-        Renseignez les informations utiles pour publier une offre immobiliere au Congo, au Gabon, au Cameroun, au Senegal ou en Cote d'Ivoire.
+        Renseignez les informations utiles pour publier une offre immobiliere au Congo, au Gabon, au Cameroun, au Senegal, en Cote d'Ivoire, au Benin ou en Republique Centrafricaine.
       </p>
     </div>
 

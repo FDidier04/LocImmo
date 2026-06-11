@@ -21,4 +21,4 @@ echo "Clés JWT générées avec succès\n";
 echo "Privée: config/jwt/private.pem\n";
 echo "Publique: config/jwt/public.pem\n";
 </content>
-<parameter name="filePath">c:\Users\Utilisateur\ImmoPlus\backend\generate_keys.php
+<parameter name="filePath">c:\Users\Utilisateur\ImmoHub\backend\generate_keys.php

@@ -10,7 +10,7 @@ class AuthApiTest extends ApiTestCase
     public function testRegisterCreatesUserAndConsentLog(): void
     {
         $this->jsonRequest('POST', '/api/auth/register', [
-            'email' => 'organizer@ImmoPlus.test',
+            'email' => 'organizer@ImmoHub.test',
             'password' => 'Password123!',
             'firstName' => 'Olivia',
             'lastName' => 'Martin',
@@ -26,7 +26,7 @@ class AuthApiTest extends ApiTestCase
         self::assertSame('User created successfully', $data['message']);
         self::assertContains('ROLE_ORGANIZER', $data['user']['roles']);
 
-        $user = $this->em->getRepository(User::class)->findOneBy(['email' => 'organizer@ImmoPlus.test']);
+        $user = $this->em->getRepository(User::class)->findOneBy(['email' => 'organizer@ImmoHub.test']);
         self::assertNotNull($user);
 
         $log = $this->em->getRepository(ConsentLog::class)->findOneBy(['user' => $user]);
@@ -38,7 +38,7 @@ class AuthApiTest extends ApiTestCase
     public function testRegisterRequiresConsent(): void
     {
         $this->jsonRequest('POST', '/api/auth/register', [
-            'email' => 'participant@ImmoPlus.test',
+            'email' => 'participant@ImmoHub.test',
             'password' => 'Password123!',
             'firstName' => 'Paul',
             'lastName' => 'Durand',
@@ -50,19 +50,19 @@ class AuthApiTest extends ApiTestCase
 
         $data = json_decode($this->client->getResponse()->getContent(), true, 512, JSON_THROW_ON_ERROR);
         self::assertSame('Consent is required (RGPD)', $data['message']);
-        self::assertNull($this->em->getRepository(User::class)->findOneBy(['email' => 'participant@ImmoPlus.test']));
+        self::assertNull($this->em->getRepository(User::class)->findOneBy(['email' => 'participant@ImmoHub.test']));
     }
 
     public function testLoginReturnsJwtToken(): void
     {
         $this->createUser([
-            'email' => 'login@ImmoPlus.test',
+            'email' => 'login@ImmoHub.test',
             'plainPassword' => 'Password123!',
             'role' => 'participant',
         ]);
 
         $this->jsonRequest('POST', '/api/auth/login', [
-            'email' => 'login@ImmoPlus.test',
+            'email' => 'login@ImmoHub.test',
             'password' => 'Password123!',
         ]);
 
@@ -76,7 +76,7 @@ class AuthApiTest extends ApiTestCase
     public function testAuthenticatedUserCanExportPersonalData(): void
     {
         $user = $this->createUser([
-            'email' => 'export@ImmoPlus.test',
+            'email' => 'export@ImmoHub.test',
             'firstName' => 'Eva',
             'lastName' => 'Durand',
             'phone' => '0607080910',
@@ -98,7 +98,7 @@ class AuthApiTest extends ApiTestCase
 
         $data = json_decode($this->client->getResponse()->getContent(), true, 512, JSON_THROW_ON_ERROR);
 
-        self::assertSame('export@ImmoPlus.test', $data['personalData']['email']);
+        self::assertSame('export@ImmoHub.test', $data['personalData']['email']);
         self::assertSame('Eva', $data['personalData']['firstName']);
         self::assertNotEmpty($data['consentLogs']);
         self::assertContains(ConsentLog::ACTION_CONSENT_GIVEN, array_column($data['consentLogs'], 'action'));

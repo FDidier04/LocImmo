@@ -1,14 +1,14 @@
 databases:
-  - name: immoplus-db
+  - name: immohub-db
     plan: free
     region: frankfurt
-    databaseName: immoplus
-    user: immoplus
+    databaseName: immohub
+    user: immohub
     postgresMajorVersion: "16"
 
 services:
   - type: web
-    name: immoplus-api
+    name: immohub-api
     runtime: docker
     rootDir: backend
     dockerfilePath: ./Dockerfile.render
@@ -25,7 +25,7 @@ services:
         generateValue: true
       - key: DATABASE_URL
         fromDatabase:
-          name: immoplus-db
+          name: immohub-db
           property: connectionString
       - key: JWT_SECRET_KEY
         value: /app/var/jwt/private.pem
@@ -44,7 +44,7 @@ services:
 
   - type: web
     runtime: static
-    name: immoplus-front
+    name: immohub-front
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist

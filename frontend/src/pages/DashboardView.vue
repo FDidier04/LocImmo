@@ -10,11 +10,11 @@ const registrationSuccess = ref('')
 
 function consumeRegistrationFlash() {
   try {
-    const message = sessionStorage.getItem('ImmoPlus-registration-success')
+    const message = sessionStorage.getItem('ImmoHub-registration-success')
     if (!message) return
 
     registrationSuccess.value = message
-    sessionStorage.removeItem('ImmoPlus-registration-success')
+    sessionStorage.removeItem('ImmoHub-registration-success')
   } catch {
     // Ignore storage issues and simply skip the flash message.
   }

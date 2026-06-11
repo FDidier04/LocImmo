@@ -83,11 +83,11 @@ async function submit() {
     <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
       <section class="glass p-6">
         <div class="section-label mb-2">Coordonnees</div>
-        <h2 class="text-2xl font-extrabold text-main">Equipe Immo+</h2>
+        <h2 class="text-2xl font-extrabold text-main">Equipe Immo Hub</h2>
         <div class="mt-5 space-y-4 text-sm text-sub">
           <p>
             <span class="text-muted">Email :</span>
-            <strong class="text-main ml-2">contact@immoplus.local</strong>
+            <strong class="text-main ml-2">contact@immohub.local</strong>
           </p>
           <p>
             <span class="text-muted">Delai moyen :</span>

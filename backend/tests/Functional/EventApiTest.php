@@ -7,11 +7,11 @@ class EventApiTest extends ApiTestCase
     public function testParticipantCannotRegisterToTwoOverlappingEvents(): void
     {
         $organizer = $this->createUser([
-            'email' => 'schedule-organizer@ImmoPlus.test',
+            'email' => 'schedule-organizer@ImmoHub.test',
             'role' => 'organisateur',
         ]);
         $participant = $this->createUser([
-            'email' => 'schedule-participant@ImmoPlus.test',
+            'email' => 'schedule-participant@ImmoHub.test',
             'role' => 'participant',
         ]);
 
@@ -40,11 +40,11 @@ class EventApiTest extends ApiTestCase
     public function testParticipantCanRegisterToTwoNonOverlappingEvents(): void
     {
         $organizer = $this->createUser([
-            'email' => 'calendar-organizer@ImmoPlus.test',
+            'email' => 'calendar-organizer@ImmoHub.test',
             'role' => 'organisateur',
         ]);
         $participant = $this->createUser([
-            'email' => 'calendar-participant@ImmoPlus.test',
+            'email' => 'calendar-participant@ImmoHub.test',
             'role' => 'participant',
         ]);
 
@@ -69,7 +69,7 @@ class EventApiTest extends ApiTestCase
     public function testOrganizerCanCreateEvent(): void
     {
         $organizer = $this->createUser([
-            'email' => 'orga@ImmoPlus.test',
+            'email' => 'orga@ImmoHub.test',
             'role' => 'organisateur',
         ]);
 
@@ -96,7 +96,7 @@ class EventApiTest extends ApiTestCase
     public function testOrganizerCanUpdateOwnEvent(): void
     {
         $organizer = $this->createUser([
-            'email' => 'owner@ImmoPlus.test',
+            'email' => 'owner@ImmoHub.test',
             'role' => 'organisateur',
         ]);
         $event = $this->createEvent($organizer, [
@@ -122,7 +122,7 @@ class EventApiTest extends ApiTestCase
     public function testParticipantCannotCreateEvent(): void
     {
         $participant = $this->createUser([
-            'email' => 'participant-create@ImmoPlus.test',
+            'email' => 'participant-create@ImmoHub.test',
             'role' => 'participant',
         ]);
 

@@ -7,8 +7,8 @@
 
     <section>
       <h3 class="font-bold text-slate-900 mb-2">1. Responsable du traitement</h3>
-      <p>Immo+ — Projet intégrateur M2 Lead Dev Full Stack 2025-2026.<br />
-      DPO fictif : dpo@immoplus.local</p>
+      <p>Immo Hub — Projet intégrateur M2 Lead Dev Full Stack 2025-2026.<br />
+      DPO fictif : dpo@immohub.local</p>
     </section>
 
     <section>
@@ -59,7 +59,7 @@
       <p class="mt-3">
         Exercez vos droits depuis la page
         <router-link to="/profile" class="text-indigo-600 hover:underline font-medium">Mes données</router-link>
-        ou en contactant : dpo@immoplus.local
+        ou en contactant : dpo@immohub.local
       </p>
     </section>
 
@@ -70,7 +70,7 @@
 
     <section>
       <h3 class="font-bold text-slate-900 mb-2">8. Contact</h3>
-      <p>Pour toute question relative à vos données personnelles : <a href="mailto:dpo@immoplus.local" class="text-indigo-600 hover:underline">dpo@immoplus.local</a></p>
+      <p>Pour toute question relative à vos données personnelles : <a href="mailto:dpo@immohub.local" class="text-indigo-600 hover:underline">dpo@immohub.local</a></p>
     </section>
   </div>
 </template>

@@ -1,6 +1,6 @@
-# Immo+
+# Immo Hub
 
-Plateforme de publication d'offres immobilieres et de logements courte duree pour l'Afrique francophone, ciblee sur le Congo, le Gabon, le Cameroun, le Senegal et la Cote d'Ivoire.
+Plateforme de publication d'offres immobilieres et de logements courte duree pour l'Afrique francophone, ciblee sur le Congo, le Gabon, le Cameroun, le Senegal, la Cote d'Ivoire, le Benin et la Republique Centrafricaine.
 
 Stack reprise du projet de reference :
 - Symfony 6.4 pour l'API REST
@@ -19,12 +19,12 @@ Stack reprise du projet de reference :
 - types de biens : appartement, maison, studio, villa, bureau, terrain
 - fiche detaillee : quartier, adresse/repere, prix, surface, chambres, salles d'eau
 - demande de visite par utilisateur connecte
-- espace personnel et administration conserves depuis le socle Immo+
+- espace personnel et administration conserves depuis le socle Immo Hub
 
 ## Structure
 
 ```text
-ImmoPlus/
+ImmoHub/
 ├── backend/   # API Symfony 6.4 + Doctrine + JWT
 ├── frontend/  # SPA Vue 3 + Vite + Pinia
 ├── docker/    # reverse proxy nginx
@@ -99,5 +99,5 @@ Frontend :
 - Ne pas commiter les fichiers `.env`.
 - Ne pas commiter les cles JWT privees.
 - Les types d'offre autorises sont `Location` et `Vente`.
-- Les pays autorises par validation backend sont `Republique du Congo`, `Gabon`, `Cameroun`, `Senegal` et `Cote d'Ivoire`.
-- Les villes autorisees par validation backend sont `Brazzaville`, `Dolisie`, `Pointe-Noire`, `Nkayi`, `Libreville`, `Port-Gentil`, `Franceville`, `Oyem`, `Douala`, `Yaounde`, `Bafoussam`, `Garoua`, `Dakar`, `Saly`, `Saint-Louis`, `Thies`, `Abidjan`, `Yamoussoukro`, `Bouake` et `San-Pedro`.
+- Les pays autorises par validation backend sont `Republique du Congo`, `Gabon`, `Cameroun`, `Senegal`, `Cote d'Ivoire`, `Benin` et `Republique Centrafricaine`.
+- Les villes autorisees par validation backend sont `Brazzaville`, `Pointe-Noire`, `Libreville`, `Port-Gentil`, `Douala`, `Yaounde`, `Dakar`, `Saly`, `Abidjan`, `Yamoussoukro`, `Cotonou`, `Porto-Novo`, `Bangui` et `Bimbo`.

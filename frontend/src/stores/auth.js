@@ -55,7 +55,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   if (!authSyncInitialized && typeof window !== 'undefined') {
-    window.addEventListener('ImmoPlus:auth-cleared', syncFromStorage)
+    window.addEventListener('ImmoHub:auth-cleared', syncFromStorage)
     window.addEventListener('storage', syncFromStorage)
     authSyncInitialized = true
   }

@@ -14,7 +14,7 @@ $container = $kernel->getContainer();
 $em = $container->get('doctrine')->getManager();
 $hasher = new NativePasswordHasher();
 
-$email = 'admin@ImmoPlus.local';
+$email = 'admin@ImmoHub.local';
 $password = 'Admin1234!';
 
 $existing = $em->getRepository(User::class)->findOneBy(['email' => $email]);

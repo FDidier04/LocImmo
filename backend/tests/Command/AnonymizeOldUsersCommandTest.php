@@ -43,7 +43,7 @@ class AnonymizeOldUsersCommandTest extends KernelTestCase
     {
         $user = new User();
         $user
-            ->setEmail('inactive@ImmoPlus.test')
+            ->setEmail('inactive@ImmoHub.test')
             ->setFirstName('Ancien')
             ->setLastName('Compte')
             ->setPhone('0600000000')

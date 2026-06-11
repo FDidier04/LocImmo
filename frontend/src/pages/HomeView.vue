@@ -7,11 +7,13 @@ const eventsStore = useEventsStore()
 const authStore = useAuthStore()
 
 const markets = [
-  { country: 'Republique du Congo', cities: ['Brazzaville', 'Dolisie', 'Pointe-Noire', 'Nkayi'] },
-  { country: 'Gabon', cities: ['Libreville', 'Port-Gentil', 'Franceville', 'Oyem'] },
-  { country: 'Cameroun', cities: ['Douala', 'Yaounde', 'Bafoussam', 'Garoua'] },
-  { country: 'Senegal', cities: ['Dakar', 'Saly', 'Saint-Louis', 'Thies'] },
-  { country: "Cote d'Ivoire", cities: ['Abidjan', 'Yamoussoukro', 'Bouake', 'San-Pedro'] },
+  { country: 'Republique du Congo', cities: ['Brazzaville', 'Pointe-Noire'] },
+  { country: 'Gabon', cities: ['Libreville', 'Port-Gentil'] },
+  { country: 'Cameroun', cities: ['Douala', 'Yaounde'] },
+  { country: 'Senegal', cities: ['Dakar', 'Saly'] },
+  { country: "Cote d'Ivoire", cities: ['Abidjan', 'Yamoussoukro'] },
+  { country: 'Benin', cities: ['Cotonou', 'Porto-Novo'] },
+  { country: 'Republique Centrafricaine', cities: ['Bangui', 'Bimbo'] },
 ]
 
 const searchDestinations = markets.flatMap((market) =>
@@ -79,7 +81,29 @@ const popularStays = [
     rating: '4,91',
     image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80',
   },
+  {
+    type: 'Studio',
+    city: 'Cotonou',
+    country: 'Benin',
+    dates: '5-7 dec.',
+    host: 'Agence',
+    price: 36000,
+    rating: '4,88',
+    image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    type: 'Appartement',
+    city: 'Bangui',
+    country: 'Republique Centrafricaine',
+    dates: '9-11 dec.',
+    host: 'Particulier',
+    price: 30000,
+    rating: '4,82',
+    image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=700&q=80',
+  },
 ]
+
+const scrollingStays = computed(() => [...popularStays, ...popularStays])
 
 onMounted(() => {
   if (!eventsStore.events.length) {
@@ -106,10 +130,10 @@ function formatStayPrice(value) {
     <div class="glass p-8 md:p-10">
       <div class="section-label mb-3">Offres immobilieres en Afrique centrale et de l'Ouest</div>
       <h2 class="text-3xl md:text-4xl font-extrabold text-main">
-        Immo+ connecte acheteurs, locataires, proprietaires et agences
+        Immo Hub connecte acheteurs, locataires, proprietaires et agences
       </h2>
       <p class="mt-4 max-w-3xl text-base leading-7 text-sub">
-        Publiez et trouvez des offres immobilieres au Congo, au Gabon, au Cameroun, au Senegal et en Cote d'Ivoire avec une API Symfony,
+        Publiez et trouvez des offres immobilieres au Congo, au Gabon, au Cameroun, au Senegal, en Cote d'Ivoire, au Benin et en Republique Centrafricaine avec une API Symfony,
         une interface Vue moderne, l'authentification JWT et une base RGPD deja structuree.
       </p>
 
@@ -157,8 +181,9 @@ function formatStayPrice(value) {
         </div>
       </div>
 
-      <div class="rbnb-row">
-        <article v-for="stay in popularStays" :key="`${stay.type}-${stay.city}-${stay.country}-${stay.dates}`" class="rbnb-card">
+      <div class="rbnb-row-viewport">
+        <div class="rbnb-row is-scrolling">
+        <article v-for="(stay, index) in scrollingStays" :key="`${stay.type}-${stay.city}-${stay.country}-${stay.dates}-${index}`" class="rbnb-card">
           <div class="rbnb-image-wrap">
             <img :src="stay.image" :alt="`${stay.type} a ${stay.city}`" class="rbnb-image" loading="lazy" />
             <div class="rbnb-favorite-badge">Coup de coeur voyageurs</div>
@@ -174,10 +199,11 @@ function formatStayPrice(value) {
             <p class="text-sm text-sub">{{ formatStayPrice(stay.price) }} · ★ {{ stay.rating }}</p>
           </div>
         </article>
+        </div>
       </div>
     </section>
 
-    <section class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+    <section class="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
       <article v-for="market in markets" :key="market.country" class="LI-card p-5">
         <div class="section-label mb-2">Pays</div>
         <h3 class="text-xl font-extrabold text-main">{{ market.country }}</h3>
